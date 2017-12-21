@@ -1,0 +1,2 @@
+SS_ADD: 'add:{"server_port":8399,"password":"helloworld"}'
+SS_REMOVE: 'remove:{"server_port":8399}'
