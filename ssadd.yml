@@ -1,0 +1,27 @@
+---
+- hosts: vpnserv
+  become: yes
+  become_user: root
+  gather_facts: no
+
+  vars_files:
+   - ssvars.yml
+
+  tasks:
+   - name: Copy shell ssadmin.py to remote host
+     copy:
+       src: ssadmin.py
+       dest: /tmp/ssadmin.py
+       mode: 0700
+
+   - name: Remove file /tmp/client.sock from remote host
+     file:
+       path: /tmp/client.sock
+       state: absent
+
+   - name: admin port with two parameters
+     command: /tmp/ssadmin.py '{{SS_ADD}}'
+     when: SS_ADD is defined 
+
+   - name: Remove file ssadmin.py from remote host
+     file: path=/tmp/ssadmin.py state=absent 
