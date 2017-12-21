@@ -16,6 +16,8 @@ if len(sys.argv) < 2:
    sys.exit(1)
 
 cmdstr=sys.argv[1]
+print("cmdstr[{}]".format(cmdstr))
+
 
 cli = socket.socket(socket.AF_UNIX, socket.SOCK_DGRAM)
 try:
@@ -38,4 +40,3 @@ except Exception as e:
 cli.close()
 os.remove(CLIENT_SOCK)
 sys.exit(status)
-
