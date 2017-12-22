@@ -44,6 +44,7 @@
    netstat -ntlp | egrep "8399"
    
    Note:
+   
    if you wanna add other port to listen , please modify 
    
    variable SS_REMOVE defined in file ssvars.yml.
@@ -59,5 +60,6 @@
    echo -n "ss://"$(echo -n aes-256-cfb:helloworld@40.71.199.96:8000 | base64) | qr
 
    Note:
+   
    IP address 40.71.199.96 should be replaced with your own IP.
    
