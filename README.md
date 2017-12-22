@@ -4,7 +4,7 @@
 
    ansible-playbook ssinstall.yml
    
-   Perform command below to check if services have been started:
+   Perform command below on remote host to check if services have been started:
    
    netstat -ntlp | egrep "(80)|(83)"
 
@@ -12,7 +12,7 @@
 
    ansible-playbook ssadd.yml
    
-   Perform command below to check if service has been started:
+   Perform command on remote host below to check if service has been started:
    
    netstat -ntlp | egrep "8399"
    
@@ -29,7 +29,7 @@
    
    ./ssremove.sh
    
-   Perform command below to check if service has been removed:
+   Perform command on remote host below to check if service has been removed:
    
    netstat -ntlp | egrep "8399"
    
