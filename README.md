@@ -22,7 +22,7 @@
    
    Note:
    if you wanna add other port to listen , please modify 
-   variable SS_ADD defined in file ssvars.yml.
+   variable SS_REMOVE defined in file ssvars.yml.
    
 4. Schedule task to remove listened port 8399. The schedule
    time should be modified as required before performed.
