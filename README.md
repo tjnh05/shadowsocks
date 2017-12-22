@@ -3,10 +3,18 @@
 1. Deploy shadowsocks on remote host vpnserv
 
    ansible-playbook ssinstall.yml
+   
+   Perform command below to check if services have been started:
+   
+   netstat -ntlp | egrep "(80)|(83)"
 
 2. Add port 8399 to listen
 
    ansible-playbook ssadd.yml
+   
+   Perform command below to check if service has been started:
+   
+   netstat -ntlp | egrep "8399"
    
    Note:
    if you wanna add other port to listen , please modify 
@@ -19,6 +27,10 @@
    or
    
    ./ssremove.sh
+   
+   Perform command below to check if service has been removed:
+   
+   netstat -ntlp | egrep "8399"
    
    Note:
    if you wanna add other port to listen , please modify 
