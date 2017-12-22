@@ -11,3 +11,12 @@
 3. Remove listened port 8339
 
    ansible-playbook ssremove.yml
+   
+   or
+   
+   ./ssremove.sh
+   
+4. Schedule task to remove listened port 8399. The schedule
+   time should be modified as required before performed.
+   
+   crontab sscrontab.txt
