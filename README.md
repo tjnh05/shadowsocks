@@ -53,4 +53,11 @@
    time should be modified as required before performed.
    
    crontab sscrontab.txt
+
+5. Generate QR code for configuration of shadowsocks client.
+
+   echo -n "ss://"`echo -n aes-256-cfb:helloworld@40.71.199.96:8000 | base64` | qr
+
+   Note:
+   IP address 40.71.199.96 should be replaced with your own IP.
    
