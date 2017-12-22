@@ -1,6 +1,6 @@
 # shadowsocks administrator
 
-#1. Deploy shadowsocks on remote host vpnserv
+1. Deploy shadowsocks on remote host vpnserv
 
    ansible-playbook ssinstall.yml
    
@@ -8,7 +8,7 @@
    
    netstat -ntlp | egrep "(80)|(83)"
 
-#2. Add port 8399 to listen
+2. Add port 8399 to listen
 
    ansible-playbook ssadd.yml
    
@@ -21,7 +21,7 @@
    
    variable SS_ADD defined in file ssvars.yml.
 
-#3. Remove listened port 8339
+3. Remove listened port 8339
 
    ansible-playbook ssremove.yml
    
@@ -38,7 +38,7 @@
    
    variable SS_REMOVE defined in file ssvars.yml.
    
-#4. Schedule task to remove listened port 8399. The schedule
+4. Schedule task to remove listened port 8399. The schedule
 
    time should be modified as required before performed.
    
