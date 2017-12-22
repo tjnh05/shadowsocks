@@ -55,4 +55,9 @@
 
    - name: Startup shadowsocks server
      command: "ssserver --manager-address /var/run/shadowsocks-manager.sock -c /etc/shadowsocks.json -d restart"
+   
+    - name: Install qrcode by pip on localhost if variable INSTALL_QRCODE is defined
+     pip:  name="qrcode" state=present
+     delegate_to: localhost
+     when: INSTALL_QRCODE is defined and INSTALL_QRCODE == "yes"
 
