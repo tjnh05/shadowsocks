@@ -1,0 +1,58 @@
+---
+# Deploy shadowsocks
+# written by bodhi wang
+# bodwang@deloitte.com.cn
+# Dec 22, 2017
+- hosts: vpnserv
+  become: yes
+  become_user: root
+
+
+  tasks:
+   - name: Install pip on Debian/Ubuntu
+     apt:  pkg="{{item}}" state=present
+     with_items:
+       - python-pip
+       - git
+     when: ansible_os_family =='Debian'
+
+   - name: Install python-setuptools on RedHat/CentOS
+     yum:  name="{{item}}" state=present
+     with_items:
+       - python-setuptools
+       - git
+     when: ansible_os_family =='RedHat'
+   - name: Install pip on RedHat/CentOS
+     command: "easy_install pip" 
+     when: ansible_os_family =='RedHat'
+
+   - name: Install shadowsocks by pip
+     pip:  name="git+https://github.com/shadowsocks/shadowsocks.git@master" state=present
+
+   - name: Copy config file of shadowsocks to remote host
+     copy:
+       src: shadowsocks.json
+       dest: /etc/shadowsocks.json
+       mode: 0600
+
+   - name: Modify /etc/rc.local
+     lineinfile:
+       path: /etc/rc.local
+       regexp: '^/bin/rm -rf /var/run/shadowsocks-manager.sock'
+       line: '/bin/rm -rf /var/run/shadowsocks-manager.sock'
+
+   - name: Modify /etc/rc.local
+     lineinfile:
+       path: "/etc/rc.local"
+       regexp: '^ssserver --manager-address /var/run/shadowsocks-manager.sock'
+       line: 'ssserver --manager-address /var/run/shadowsocks-manager.sock -c /etc/shadowsocks.json -d start'
+
+   - name: Change mode of /etc/rc.d/rc.local
+     file: 
+       path: "/etc/rc.d/rc.local"
+       mode: ugo+x
+       state: file
+
+   - name: Startup shadowsocks server
+     command: "ssserver --manager-address /var/run/shadowsocks-manager.sock -c /etc/shadowsocks.json -d restart"
+
