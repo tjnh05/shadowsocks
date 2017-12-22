@@ -4,7 +4,13 @@
 
    ansible-playbook ssinstall.yml
    
-   Perform command below on remote host by root user to check if services have been started:
+   If you wanna install tool qrcode on localhost, perform command below:
+   
+   ansible-playbook ssinstall.yml --extra-vars="INSTALL_QRCODE=yes"
+   
+   Perform command below on remote host by root user to check if shadowsocks services
+   
+   have been started:
    
    netstat -ntlp | egrep "(80)|(83)"
 
@@ -12,7 +18,9 @@
 
    ansible-playbook ssadd.yml
    
-   Perform command below on remote host by root user to check if service has been started:
+   Perform command below on remote host by root user to check if shadowsocks service
+   
+   has been started:
    
    netstat -ntlp | egrep "8399"
    
@@ -29,7 +37,9 @@
    
    ./ssremove.sh
    
-   Perform command below on remote host by root user to check if service has been removed:
+   Perform command below on remote host by root user to check if shadowsocks service
+   
+   has been removed:
    
    netstat -ntlp | egrep "8399"
    
