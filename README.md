@@ -81,3 +81,7 @@
    Waterdrop - Shadowsocks Client for iOS
    
    https://itunes.apple.com/us/app/waterdrop-shadowsocks-client-for-ios/id1212107997?mt=8
+   
+   or
+   
+   https://shadowsocks.org/en/download/clients.html
