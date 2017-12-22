@@ -57,7 +57,7 @@
 
 5. Generate QR code for configuration of shadowsocks client.
 
-   echo -n "ss://"$(echo -n aes-256-cfb:helloworld@40.71.199.96:8000 | base64) | qr
+   echo -n "ss://"$(echo -n aes-256-cfb:helloworld@40.71.199.96:8000 | base64) | qr >shadowsocks.png
 
    Note:
    
