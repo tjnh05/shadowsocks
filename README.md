@@ -64,9 +64,11 @@
    IP address 40.71.199.96 should be replaced with your own IP.
    
 6. Download shadowsocks client.
+
    for windows:
    
    https://github.com/shadowsocks/shadowsocks-windows/releases/download/4.0.7/Shadowsocks-4.0.7.zip
+   
    
    for android:
    
@@ -75,6 +77,7 @@
    or
    
    https://github.com/shadowsocks/shadowsocks-android/releases/download/v4.4.1/shadowsocks-nightly-4.4.1.apk
+   
    
    for ios:
    
