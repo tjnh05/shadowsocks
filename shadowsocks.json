@@ -1,0 +1,21 @@
+{
+    "server": "0.0.0.0",
+    "port_password": {
+        "8000": "helloworld",
+        "8381": "helloworld",
+        "8382": "helloworld",
+        "8383": "helloworld",
+        "8384": "helloworld",
+        "8385": "helloworld",
+        "8386": "helloworld",
+        "8387": "helloworld",
+        "8388": "helloworld",
+        "8389": "helloworld",
+        "8390": "helloworld",
+        "8391": "helloworld",
+        "8392": "helloworld",
+        "8393": "helloworld"
+    },
+    "timeout": 300,
+    "method": "aes-256-cfb"
+}
