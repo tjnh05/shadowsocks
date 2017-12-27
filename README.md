@@ -63,3 +63,28 @@
    
    IP address 40.71.199.96 should be replaced with your own IP.
    
+6. Download shadowsocks client.
+
+   for windows:
+   
+   https://github.com/shadowsocks/shadowsocks-windows/releases/download/4.0.7/Shadowsocks-4.0.7.zip
+   
+   
+   for android:
+   
+   https://github.com/shadowsocks/shadowsocks-android/releases/download/v4.4.0/shadowsocks-nightly-4.4.0.apk
+   
+   or
+   
+   https://github.com/shadowsocks/shadowsocks-android/releases/download/v4.4.1/shadowsocks-nightly-4.4.1.apk
+   
+   
+   for ios:
+   
+   Waterdrop - Shadowsocks Client for iOS
+   
+   https://itunes.apple.com/us/app/waterdrop-shadowsocks-client-for-ios/id1212107997?mt=8
+   
+   or
+   
+   https://shadowsocks.org/en/download/clients.html
