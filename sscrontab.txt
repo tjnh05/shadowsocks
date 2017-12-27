@@ -1,4 +1,4 @@
 PATH=/usr/local/sbin:/sbin:/bin:/usr/sbin:/usr/bin:/root/bin
 MAILTO=root@localhost
-0 1 26 12 * 2017 /root/scripts/vpnserv/ssremove.sh
+0 1 26 12 * /root/scripts/vpnserv/ssremove.sh
 
