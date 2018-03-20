@@ -1,7 +1,7 @@
 ---
 # Deploy shadowsocks
 # written by bodhi wang
-# bodwang@deloitte.com.cn
+# jyxz5@qq.com
 # Dec 22, 2017
 - hosts: vpnserv
   become: yes
