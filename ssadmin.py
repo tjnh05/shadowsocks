@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 #
 #bodhi wang
-#bodwang@deloitte.com.cn
+#jyxz5@qq.com
 #2017.12.20
 import socket
 import sys
