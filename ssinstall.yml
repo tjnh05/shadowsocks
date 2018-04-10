@@ -9,12 +9,28 @@
 
 
   tasks:
+   - name: Update the system to the latest
+     command: yum update -y
+     args:
+       warn: no
+     when: ansible_os_family =='RedHat'
+     tags:
+       - system
+
+   - name: Set timezone as Asia/Shanghai
+     command: timedatectl set-timezone Asia/Shanghai
+     when: ansible_os_family =='RedHat'
+     tags:
+       - system
+
    - name: Install pip on Debian/Ubuntu
      apt:  pkg="{{item}}" state=present
      with_items:
        - python-pip
        - git
      when: ansible_os_family =='Debian'
+     tags:
+       - basic
 
    - name: Install python-setuptools on RedHat/CentOS
      yum:  name="{{item}}" state=present
@@ -22,42 +38,65 @@
        - python-setuptools
        - git
      when: ansible_os_family =='RedHat'
+     tags:
+       - basic
+
    - name: Install pip on RedHat/CentOS
      command: "easy_install pip" 
      when: ansible_os_family =='RedHat'
+     tags:
+       - basic
 
    - name: Install shadowsocks by pip
      pip:  name="git+https://github.com/shadowsocks/shadowsocks.git@master" state=present
+     tags:
+       - ss
 
    - name: Copy config file of shadowsocks to remote host
      copy:
        src: shadowsocks.json
        dest: /etc/shadowsocks.json
        mode: 0600
+     tags:
+       - ssconf
 
    - name: Modify /etc/rc.local
      lineinfile:
        path: /etc/rc.local
        regexp: '^/bin/rm -rf /var/run/shadowsocks-manager.sock'
        line: '/bin/rm -rf /var/run/shadowsocks-manager.sock'
+     tags:
+       - ssconf
 
    - name: Modify /etc/rc.local
      lineinfile:
        path: "/etc/rc.local"
        regexp: '^ssserver --manager-address /var/run/shadowsocks-manager.sock'
        line: 'ssserver --manager-address /var/run/shadowsocks-manager.sock -c /etc/shadowsocks.json -d start'
+     tags:
+       - ssconf
 
    - name: Change mode of /etc/rc.d/rc.local
      file: 
        path: "/etc/rc.d/rc.local"
        mode: ugo+x
        state: file
+     tags:
+       - ssconf
 
-   - name: Startup shadowsocks server
-     command: "ssserver --manager-address /var/run/shadowsocks-manager.sock -c /etc/shadowsocks.json -d restart"
-   
+   - name: Restart rc-local service
+     service:
+       name: "{{item}}"
+       state: restarted
+       enabled: yes
+     with_items:
+       - rc-local
+     tags:
+       - sstart
+
    - name: Install qrcode by pip on localhost if variable INSTALL_QRCODE is defined
      pip:  name="qrcode" state=present
      delegate_to: localhost
      when: INSTALL_QRCODE is defined and INSTALL_QRCODE == "yes"
-
+     tags:
+       - qrcode
