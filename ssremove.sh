@@ -1,6 +1,6 @@
 #! /bin/bash
 #written by  bodhi wang
-#mail:bodwang@deloitte.com.cn
+#mail:jyxz5@qq.com
 #2017.12.21
 set -x
 
